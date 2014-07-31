@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="/css/jquery-ui/jquery-ui-1.10.4.custom.css" />
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap/bootstrap.css" />
+    <link type="text/css" rel="stylesheet" href="/css/bootstrap-override.css" />
+    <link type="text/css" rel="stylesheet" href="/css/trello.css" />
+    <script type="text/javascript" src="/js/src/lib/jquery.js"></script>
+	<script type="text/javascript" src="js/src/lib/jquery-ui-1.10.4.custom.js" ></script>
+	<script type="text/javascript" src="/js/src/lib/angular.js"></script>
+    <script type="text/javascript" src="jsfm.js"></script>
+    <script type="text/javascript" src="/js/src/lib/bootstrap.js"></script>
+    <script>
+		fm.basedir = "/js/src/classes";
+		fm.Include("/js/src/App.js");
+	</script>
+
+</head>
+<body>
+    <div ng-controller="mainController">
+        <div id="container">
+            <div 
+                class="list" 
+                list-drag-drop
+                ng-repeat="list in trello.board.listManager.items">
+
+                <div class="head">
+                    <span> {{list.head_text }} </span>
+                </div>
+                <div class="body">
+                    <div 
+                        class="card"
+                        card-drag-drop
+                        ng-repeat="card in list.cardManager.items">
+                        
+                        {{card.text}}
+                    </div>
+                </div>
+            </div>     
+        </div>
+    </div>
+</body>
+</html>
