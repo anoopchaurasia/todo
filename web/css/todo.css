@@ -1,8 +1,28 @@
 .list {
-	float: left;
-	padding: 10px;
+    float: left;
+    width: 200px;
+    border: 1px solid #ccc;
+    margin: 10px;
+    border-radius: 3px;
+    box-shadow: 4px 4px 5px #ccc;
+    background: #e3e3e3;
+    padding: 6px;
+}
+
+.list >div.head {
+    min-height: 20px;
+    padding: 3px 0 6px 6px
 }
 
 .card {
-	padding: 10px 0;
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-bottom: 5px;
+    max-width: 300px;
+    min-height: 20px;
+    z-index: 0;
+    word-break: break-word;
+    padding: 6px 8px 4px;
 }

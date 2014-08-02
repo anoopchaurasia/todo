@@ -18,28 +18,37 @@
 </head>
 <body>
     <div ng-controller="mainController">
-        <div 
+        <div
             list-drag-drop
             id="container">
-            <div 
-                class="list" 
+            <div
+                class="list"
                 ng-repeat="list in todo.board.listManager.items">
 
                 <div class="head">
                     <span> {{list.head_text }} </span>
                 </div>
                 <div
-                    card-drag-drop 
+                    card-drag-drop
                     class="body">
-                    <div 
+                    <div
                         class="card"
                         inline-editor
                         ng-repeat="card in list.cardManager.items">
-                        
+
                         {{card.text}}
                     </div>
+                    <div ng-click="list.cardManager.addCard()">
+                    add card
+                    </div>
                 </div>
-            </div>     
+            </div>
+            <div
+                class="list"
+                ng-click="todo.board.listManager.addList()">
+
+                add list
+            </div>
         </div>
     </div>
 </body>
