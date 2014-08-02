@@ -1,4 +1,4 @@
 require("jsfm-starter");
 fm.basedir = __dirname;
 console.log(__dirname);
-fm.include("app.Trello");
+fm.include("app.Todo");

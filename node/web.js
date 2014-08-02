@@ -6,7 +6,7 @@
  fm.Class("webPath");
  webPath = function (me) {
      Static.path = {
-        "trello" : {'class':"app.Trello"}
+        "todo" : {'class':"app.Todo"}
 	};
     Static.sources = './web/';
 };
