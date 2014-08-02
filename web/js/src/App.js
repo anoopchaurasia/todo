@@ -2,7 +2,18 @@ angular.module("app", [])
 .directive("listDragDrop", [
 	function () {
 		function linker (scope, element, attrs) {
-			element.sortable();
+			element.sortable({
+				placeholder: "ui-state-highlight",
+				start: function (e, helper) {
+					helper.placeholder
+					.height(helper.item.height())
+					.width(helper.item.width());
+					helper.item.css('transform', "rotate(4deg)");
+				},
+				stop: function (e, helper) {
+					helper.item.css('transform', "rotate(0deg)");
+				}
+			});
 			element.disableSelection();
 		}
 
@@ -14,7 +25,9 @@ angular.module("app", [])
 .directive("cardDragDrop", [
 	function () {
 		function linker (scope, element, attrs) {
-			element.sortable();
+			element.sortable({
+				placeholder: "ui-state-highlight"
+			});
 			element.disableSelection();
 		}
 
