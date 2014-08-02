@@ -22,6 +22,19 @@ angular.module("app", [])
 			link: linker
 		};
 	}
+])
+.directive('inlineEditor', [
+	function () {
+		function linker(scope, element, attrs) {
+			fm.Include("common.InlineEditor", function(){
+				new common.InlineEditor(element);
+			});
+		}
+
+		return {
+			link: linker
+		}
+	}
 ]);
 
 fm.Include("todo.Todo",function(){

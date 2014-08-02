@@ -1,4 +1,5 @@
 fm.Package("todo");
+fm.Include("common.InlineEditor");
 fm.Include("todo.controller.mainController");
 fm.Import("todo.board.Board");
 fm.Class("Todo");
