@@ -4,7 +4,8 @@ fm.Class('List');
 todo.list.List = function (me, CardManager) {
 	
 	this.List = function (data) {
-		this.cardManager = new CardManager();
+		data.cardManager = data.cardManager || {};
+		this.cardManager = new CardManager(data.cardManager.items);
 		this.head_text = data.head_text;
 		this.order = data.order;
 	};

@@ -5,8 +5,8 @@ fm.Import("todo.board.Board");
 fm.Class("Todo");
 todo.Todo = function (me, Board) {
 	
-	this.Todo = function () {
+	this.Todo = function (data) {
 		
-		this.board = new Board();	
+		this.board = new Board(data.board);	
 	};
 };

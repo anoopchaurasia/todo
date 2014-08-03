@@ -2,7 +2,7 @@ fm.Package("common");
 fm.Class("InlineEditor");
 common.InlineEditor = function () {
 
-	function createTextArea(  div ) {
+	function createTextArea(div, afterUpdate) {
 		var text = $.trim(div.html()).replace(	/\s+/g, " ").replace(/<br\s*\/?>/mgi,"\n");
 		$(this).hide();
         div.css("position", "relative");
@@ -36,6 +36,7 @@ common.InlineEditor = function () {
 			div.html( this.value.replace(/\n/g, "<br>") );
 			div.css("visibility","visible");
 			$( this).remove();
+			afterUpdate && afterUpdate(this.value);
 		}).keyup(function(e) {
             div.html( this.value.replace(/\n/g, "<br>") );
 			if( height !=  this.scrollHeight ){
@@ -59,7 +60,7 @@ common.InlineEditor = function () {
         }
     }
 
-	this.editText = function (element){
-		createTextArea( element );
+	this.editText = function (element, afterUpdate){
+		createTextArea( element, afterUpdate);
 	};
 };

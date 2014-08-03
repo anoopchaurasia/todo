@@ -30,7 +30,9 @@ angular.module("app", [])
 					helper.item.css("transform", "rotate(0deg)");
 					var oldIndex = helper.item.data('oldIndex');
 					var currentIndex = helper.item.index();
-					scope.updateListIndex(currentIndex, oldIndex);				}
+					scope.updateListIndex(currentIndex, oldIndex);		
+					scope.safeApply();			
+				}
 			});
 			element.disableSelection();
 		}
@@ -44,7 +46,16 @@ angular.module("app", [])
 	function () {
 		function linker (scope, element, attrs) {
 			element.sortable({
-				placeholder: "ui-state-highlight"
+				placeholder: "ui-state-highlight",
+				start: function (e, helper) {
+					helper.item.data('oldIndex', helper.item.index());
+				},
+				stop: function (e, helper) {
+					var oldIndex = helper.item.data('oldIndex');
+					var currentIndex = helper.item.index();
+					scope.list.cardManager.swapItemForIndex(currentIndex, oldIndex);
+					scope.safeApply();	
+				}
 			});
 			element.disableSelection();
 		}
@@ -58,11 +69,15 @@ angular.module("app", [])
 	function ($timeout) {
 		function linker(scope, element, attrs) {
 			element.click(function () {
-				scope.inlineEditor.editText(element);
+				scope.inlineEditor.editText(element, function(text){
+					scope.card.text = text;
+				});
 			});
 			if(!scope.card.text) {
 				$timeout(function(){
-					scope.inlineEditor.editText(element);
+					scope.inlineEditor.editText(element, function(text){
+						scope.card.text = text;
+					});
 				}, 100);
 			}
 		}

@@ -31,11 +31,12 @@
                         <span> {{list.head_text }} </span>
                     </div>
                     <div
-                        card-drag-drop
+                        card-drag-drop 
                         class="body">
                         <div
                             class="card"
                             inline-editor
+                            ng-model="card.text"
                             ng-repeat="card in list.cardManager.items">
                             {{card.text}}
                         </div>
