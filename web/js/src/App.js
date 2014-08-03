@@ -10,24 +10,27 @@ angular.module("app", [])
 					.width(helper.item.width())
 					helper.placeholder.
 					css({
-						"padding-top": helper.item.css('padding-top'),
-						"padding-right": helper.item.css('padding-right'),
-						"padding-bottom": helper.item.css('padding-bottom'),
-						"padding-left": helper.item.css('padding-left'),
-						"margin-top": helper.item.css('margin-top'),
-						"margin-right": helper.item.css('margin-right'),
-						"margin-bottom": helper.item.css('margin-bottom'),
-						"margin-left": helper.item.css('margin-left'),
-						border: "1px solid transparent",
-						'border-radius': '3px'
+						"padding-top": helper.item.css("padding-top"),
+						"padding-right": helper.item.css("padding-right"),
+						"padding-bottom": helper.item.css("padding-bottom"),
+						"padding-left": helper.item.css("padding-left"),
+						"margin-top": helper.item.css("margin-top"),
+						"margin-right": helper.item.css("margin-right"),
+						"margin-bottom": helper.item.css("margin-bottom"),
+						"margin-left": helper.item.css("margin-left"),
+						"border": "1px solid transparent",
+						"border-radius": "3px"
 					});
-					element.find('.list.add').hide();
-					helper.item.css('transform', "rotate(4deg)");
+					element.find(".list.add").hide();
+					helper.item.data('oldIndex', helper.item.index());
+					helper.item.css("transform", "rotate(4deg)");
 				},
 				stop: function (e, helper) {
-					element.find('.list.add').show();
-					helper.item.css('transform', "rotate(0deg)");
-				}
+					element.find(".list.add").show();
+					helper.item.css("transform", "rotate(0deg)");
+					var oldIndex = helper.item.data('oldIndex');
+					var currentIndex = helper.item.index();
+					scope.updateListIndex(currentIndex, oldIndex);				}
 			});
 			element.disableSelection();
 		}
@@ -51,7 +54,7 @@ angular.module("app", [])
 		};
 	}
 ])
-.directive('inlineEditor', ["$timeout",
+.directive("inlineEditor", ["$timeout",
 	function ($timeout) {
 		function linker(scope, element, attrs) {
 			element.click(function () {

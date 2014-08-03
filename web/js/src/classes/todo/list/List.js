@@ -6,5 +6,6 @@ todo.list.List = function (me, CardManager) {
 	this.List = function (data) {
 		this.cardManager = new CardManager();
 		this.head_text = data.head_text;
+		this.order = data.order;
 	};
 };

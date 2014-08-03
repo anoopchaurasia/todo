@@ -14,4 +14,11 @@ todo.card.CardManager = function (base, me, Card) {
     this.saveCard = function(card) {
     	
     };
+
+    this.swapItemForIndex = function (index1, index2) {
+    	this.base.swapItemForIndex(index1, index2);
+    	this.items.forEach(function (item, index) {
+    		item.order = index;
+    	});	
+    };
 };

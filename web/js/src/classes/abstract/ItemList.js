@@ -81,4 +81,9 @@ abstract.ItemList = function (me) {
         }
         return this.items[keyValue[id]];
     };
+
+    this.swapItemForIndex = function (index1, index2) {
+        this.items.splice(index1, 0, 
+        this.items.splice(index2, 1)[0]);
+    };
 };

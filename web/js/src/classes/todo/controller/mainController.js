@@ -28,4 +28,8 @@ function mainController($scope, $rootScope) {
     		text: ""
     	});
     };
+
+    $scope.updateListIndex = function (current, old){
+        $scope.todo.board.listManager.swapItemForIndex(current, old);
+    };
 }

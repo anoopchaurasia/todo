@@ -11,4 +11,10 @@ todo.list.ListManager = function (base, me, List) {
         this.add(new List(listData));
     };
 
+    this.swapItemForIndex = function (index1, index2) {
+    	this.base.swapItemForIndex(index1, index2);
+    	this.items.forEach(function (item, index) {
+    		item.order = index;
+    	});	
+    };
 };
