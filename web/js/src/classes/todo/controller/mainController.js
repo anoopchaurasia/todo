@@ -10,7 +10,7 @@ function mainController($scope, $rootScope) {
     $scope.inlineEditor = new common.InlineEditor();
 
     $scope.todo = new todo.Todo();
-
+    window.todot = $scope.todo;
     $scope.showAddListForm = function () {
     	$scope.showAddListFormFlag = true;	
     };

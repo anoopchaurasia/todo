@@ -10,4 +10,8 @@ todo.card.CardManager = function (base, me, Card) {
     this.addCard = function (card){
         this.add(new Card(card));
     };
+
+    this.saveCard = function(card) {
+    	
+    };
 };

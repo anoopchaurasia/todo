@@ -72,6 +72,7 @@ angular.module("app", [])
 
 fm.Include("todo.Todo",function(){
     $(document).ready(function(){
+    	fm.globaltransient = ["$$hashKey"];
         angular.bootstrap(document, ["app"]);
     });
 });
