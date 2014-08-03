@@ -37,19 +37,28 @@
                             class="card"
                             inline-editor
                             ng-repeat="card in list.cardManager.items">
-
                             {{card.text}}
                         </div>
-                        <div ng-click="list.cardManager.addCard()">
-                        add card
+                        <div ng-click="addCard(list.cardManager)">
+                        <a>add card</a>
                         </div>
                     </div>
                 </div>
             </div>
             <div
-                class="list"
-                ng-click="todo.board.listManager.addList()">
-                add list
+                class="list add"
+                ng-click="showAddListForm()">
+                <a ng-hide="showAddListFormFlag">add list</a>
+                <form ng-show="showAddListFormFlag">
+                    <input
+                        type="text"
+                        placeholder="Add List..."
+                        ng-model="newAddListFormHeaderText">   
+                    <input 
+                        type="button"
+                        value="Save"
+                        ng-click="saveList(); $event.stopPropagation()">                     
+                </form>
             </div>
         </div>
     </div>

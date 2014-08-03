@@ -5,10 +5,9 @@ todo.card.CardManager = function (base, me, Card) {
 
 	this.CardManager = function (cards) {
 		this.base(Card, cards || []);
-        this.addCard();
 	};
 
-    this.addCard = function (){
-        this.add(new Card());
+    this.addCard = function (card){
+        this.add(new Card(card));
     };
 };

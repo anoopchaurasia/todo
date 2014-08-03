@@ -59,11 +59,7 @@ common.InlineEditor = function () {
         }
     }
 
-	function makeEditable() {
-		createTextArea( $( this ) );
-	}
-	this.InlineEditor = function(element) {
-
-		element.click(makeEditable);
+	this.editText = function (element){
+		createTextArea( element );
 	};
 };

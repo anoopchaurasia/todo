@@ -7,10 +7,25 @@ angular.module("app", [])
 				start: function (e, helper) {
 					helper.placeholder
 					.height(helper.item.height())
-					.width(helper.item.width());
+					.width(helper.item.width())
+					helper.placeholder.
+					css({
+						"padding-top": helper.item.css('padding-top'),
+						"padding-right": helper.item.css('padding-right'),
+						"padding-bottom": helper.item.css('padding-bottom'),
+						"padding-left": helper.item.css('padding-left'),
+						"margin-top": helper.item.css('margin-top'),
+						"margin-right": helper.item.css('margin-right'),
+						"margin-bottom": helper.item.css('margin-bottom'),
+						"margin-left": helper.item.css('margin-left'),
+						border: "1px solid transparent",
+						'border-radius': '3px'
+					});
+					element.find('.list.add').hide();
 					helper.item.css('transform', "rotate(4deg)");
 				},
 				stop: function (e, helper) {
+					element.find('.list.add').show();
 					helper.item.css('transform', "rotate(0deg)");
 				}
 			});
@@ -36,12 +51,17 @@ angular.module("app", [])
 		};
 	}
 ])
-.directive('inlineEditor', [
-	function () {
+.directive('inlineEditor', ["$timeout",
+	function ($timeout) {
 		function linker(scope, element, attrs) {
-			fm.Include("common.InlineEditor", function(){
-				new common.InlineEditor(element);
+			element.click(function () {
+				scope.inlineEditor.editText(element);
 			});
+			if(!scope.card.text) {
+				$timeout(function(){
+					scope.inlineEditor.editText(element);
+				}, 100);
+			}
 		}
 
 		return {

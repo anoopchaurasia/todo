@@ -5,11 +5,10 @@ todo.list.ListManager = function (base, me, List) {
 
 	this.ListManager = function (lists) {
 		this.base(List, lists || []);
-        this.addList();
 	};
 
-    this.addList = function (){
-        this.add(new List());
+    this.addList = function (listData){
+        this.add(new List(listData));
     };
 
 };

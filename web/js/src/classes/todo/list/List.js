@@ -3,8 +3,8 @@ fm.Import("todo.card.CardManager");
 fm.Class('List');
 todo.list.List = function (me, CardManager) {
 	
-	this.List = function () {
+	this.List = function (data) {
 		this.cardManager = new CardManager();
-		this.head_text = "fgfgf gfg fgf gfg";
+		this.head_text = data.head_text;
 	};
 };

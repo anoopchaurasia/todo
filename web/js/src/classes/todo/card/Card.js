@@ -3,8 +3,7 @@ fm.Class("Card");
 
 todo.card.Card = function (me) {
 	
-	this.Card = function () {
-
-		this.text = "dsfdfd d fdfdf";	
+	this.Card = function (card) {
+		this.text = card.text;	
 	};
 };
